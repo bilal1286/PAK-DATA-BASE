@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUZAMMIL-MD - CYBERNETIC INTELLIGENCE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Consolas', 'Lucida Console', 'Courier New', monospace;
+        }
+        
+        /* CYBERNETIC AZURE THEME */
+        :root {
+            --bg-primary: #0a0a1a; /* Very dark blue background */
+            --bg-secondary: #1a1a2e; /* Darker blue-purple containers */
+            --text-primary: #00e6e6; /* Bright Neon Teal for main text */
+            --text-secondary: #99ffff; /* Lighter Cyan for secondary text */
+            --accent: #6633ff; /* Electric Purple for primary accent */
+            --accent-glow: rgba(102, 51, 255, 0.6); /* Intense Purple glow */
+            --border-color: #330066; /* Deep purple border */
+            --button-bg: #1a004d; /* Darkest purple for button background */
+            --button-hover: #330080; /* Brighter purple on hover */
+            --error-color: #ff6666; /* Soft red for errors */
+            --success-color: #00ff99; /* Neon Green for success */
+        }
+        
+        .light-mode {
+            --bg-primary: #e0f2f7;
+            --bg-secondary: #ffffff;
+            --text-primary: #005668; 
+            --text-secondary: #00838f;
+            --accent: #3f51b5;
+            --accent-glow: rgba(63, 81, 181, 0.2);
+            --border-color: #b3e5fc;
+            --button-bg: #e3f2fd; 
+            --button-hover: #bbdefb; 
+            --error-color: #d32f2f;
+            --success-color: #388e3c;
+        }
+        
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Matrix Background Effect - Cyan/Purple */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.2; /* Slightly more subtle, blend with blue */
+            overflow: hidden;
+            filter: blur(0.2px);
+        }
+        
+        .matrix-char {
+            position: absolute;
+            color: var(--text-secondary); /* Matrix chars lighter for depth */
+            font-size: 15px;
+            animation: matrixFall linear infinite;
+            text-shadow: 0 0 7px var(--accent-glow); /* Purple glow */
+        }
+        
+        @keyframes matrixFall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        
+        .container {
+            max-width: 900px; /* Wider for a more expansive feel */
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: var(--bg-secondary);
+            border-radius: 18px; /* Softer rounded corners */
+            box-shadow: 0 0 60px var(--accent-glow); /* Stronger, broader glow */
+            border: 3px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            animation: pulse-header 2s infinite alternate; /* Header Pulse */
+        }
+
+        @keyframes pulse-header {
+            0% { border-color: var(--accent); box-shadow: 0 0 40px var(--accent-glow); }
+            100% { border-color: var(--text-primary); box-shadow: 0 0 55px var(--accent-glow); }
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent); /* Subtle white-blue flash */
+            animation: scanning 2.2s infinite;
+        }
+        
+        @keyframes scanning {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        h1 {
+            font-size: 4rem; /* Even larger name */
+            margin-bottom: 8px;
+            color: var(--text-primary); /* Main text color for name */
+            text-shadow: 0 0 25px var(--accent-glow), 0 0 10px var(--text-primary); /* Double shadow for clarity and glow */
+            letter-spacing: 8px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        
+        .tagline {
+            font-size: 1.6rem;
+            opacity: 1;
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--button-bg);
+            border: 2px solid var(--accent);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        .theme-toggle:hover {
+            background: var(--button-hover);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        
+        .tool-container {
+            background: var(--bg-secondary);
+            border-radius: 18px;
+            padding: 50px;
+            box-shadow: 0 0 60px var(--accent-glow);
+            border: 3px solid var(--accent);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-title {
+            font-size: 2.5rem;
+            margin-bottom: 35px;
+            text-align: center;
+            color: var(--accent); /* Title uses accent color */
+            border-bottom: 3px solid var(--text-primary); /* Teal line */
+            padding-bottom: 15px;
+            text-shadow: 0 0 12px var(--accent-glow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .search-options {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .search-option {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        .option-btn {
+            width: 100%;
+            padding: 22px;
+            background: var(--button-bg);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -180%;
+            width: 60%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3); /* Stronger white-blue flash */
+            transform: skewX(-25deg);
+            transition: left 0.5s;
+        }
+        
+        .option-btn:hover::before {
+            left: 220%;
+        }
+        
+        .option-btn.active {
+            background: var(--button-hover);
+            border-color: var(--text-primary); /* Active button border changes to teal */
+            box-shadow: 0 0 35px var(--accent-glow);
+            color: var(--text-primary); /* Active button text becomes neon teal */
+        }
+        
+        .option-btn:hover {
+            background: var(--button-hover);
+            transform: scale(1.04);
+            color: var(--text-primary); /* Text also glows on hover */
+        }
+        
+        .input-group {
+            display: flex;
+            margin-bottom: 40px;
+        }
+        
+        input {
+            flex: 1;
+            padding: 22px 28px;
+            border: 2px solid var(--border-color);
+            border-right: none;
+            border-radius: 14px 0 0 14px;
+            font-size: 1.4rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        input:focus {
+            border-color: var(--text-primary); /* Input focus color to teal */
+            box-shadow: 0 0 25px var(--text-primary); /* Teal glow on focus */
+        }
+        
+        /* Main Search Button Style - CYBERNETIC POWER */
+        button#searchBtn {
+            padding: 22px 40px;
+            background: var(--button-bg);
+            color: white;
+            border: 2px solid var(--accent);
+            border-radius: 0 14px 14px 0;
+            cursor: pointer;
+            font-size: 1.4rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+        }
+
+        button#searchBtn::after {
+            content: ' >>>'; /* More intense arrow */
+            transition: transform 0.3s ease;
+        }
+        
+        button#searchBtn:hover {
+            background: var(--button-hover);
+            border-color: var(--text-primary);
+            box-shadow: 0 0 50px var(--accent-glow), 0 0 20px var(--text-primary); /* Double glow */
+            transform: scale(1.04);
+            color: var(--text-primary);
+        }
+        
+        .result-container {
+            margin-top: 35px;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 35px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 2px solid var(--text-primary); /* Result box border teal */
+            box-shadow: inset 0 0 20px var(--accent-glow); /* Inner glow for screen effect */
+            position: relative;
+        }
+        
+        .result-row {
+            display: flex;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .result-label {
+            font-weight: bold;
+            width: 200px;
+            color: var(--accent); /* Label color purple */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .result-value {
+            flex: 1;
+            color: var(--text-secondary); /* Value color lighter cyan */
+            word-wrap: break-word; /* Ensure long text wraps */
+        }
+        
+        .no-data {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-secondary);
+            padding: 45px;
+            text-shadow: 0 0 12px var(--accent-glow);
+            text-transform: uppercase;
+        }
+        
+        .more-tools {
+            text-align: center;
+            margin-top: 55px;
+        }
+        
+        .more-tools-btn {
+            display: inline-block;
+            padding: 22px 45px;
+            background: var(--button-bg);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 25px var(--accent-glow);
+            border: 2px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+        
+        .more-tools-btn:hover {
+            background: var(--button-hover);
+            transform: translateY(-7px) scale(1.06);
+            box-shadow: 0 0 60px var(--accent-glow), 0 0 25px var(--text-primary);
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 70px;
+            padding: 25px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: var(--text-secondary);
+            text-shadow: 0 0 5px var(--bg-secondary);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 45px;
+            font-size: 2rem;
+        }
+        
+        .loading i {
+            margin-right: 20px;
+            animation: spin 0.7s linear infinite;
+            color: var(--text-primary);
+            text-shadow: 0 0 18px var(--accent-glow), 0 0 8px var(--text-primary);
+        }
+        
+        .created-by {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--accent-glow);
+            letter-spacing: 1.5px;
+        }
+        
+        .validation-error {
+            text-align: center;
+            padding: 30px;
+            color: var(--error-color);
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 2px solid var(--error-color);
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(255, 102, 102, 0.5);
+        }
+        
+        .example-number {
+            color: var(--text-secondary); /* Example text color lighter */
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1.3rem;
+            text-shadow: none;
+        }
+        
+        .number-item {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--success-color); /* Neon green for list items */
+            color: var(--success-color);
+            box-shadow: 0 0 8px rgba(0, 255, 153, 0.3);
+            font-size: 1.1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            header, .tool-container {
+                padding: 25px;
+                border-radius: 12px;
+                box-shadow: 0 0 30px var(--accent-glow);
+            }
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+            .tagline {
+                font-size: 1.1rem;
+            }
+            .tool-title {
+                font-size: 1.8rem;
+            }
+            .search-options {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .input-group {
+                flex-direction: column;
+            }
+            input, button {
+                width: 100%;
+                border-radius: 12px;
+                margin-bottom: 10px;
+                border-right: 2px solid var(--border-color); 
+            }
+            button#searchBtn {
+                border-radius: 12px;
+            }
+            .input-group input {
+                border-radius: 12px;
+            }
+            .result-container {
+                padding: 20px;
+                min-height: 200px;
+            }
+            .result-row {
+                flex-direction: column;
+            }
+            .result-label {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+            .no-data, .loading {
+                font-size: 1.4rem;
+                padding: 25px;
+            }
+            .more-tools-btn {
+                font-size: 1.2rem;
+                padding: 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg" id="matrixBg"></div>
+    
+    <div class="container">
+        <header>
+            <h1>MUZAMMIL-MD</h1>
+            <p class="tagline">CYBERNETIC INTELLIGENCE INTERFACE</p>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i> DARK MODE
+            </button>
+        </header>
+        
+        <div class="tool-container">
+            <h2 class="tool-title">ADVANCED DATA RETRIEVAL MODULE</h2>
+            
+            <div class="search-options">
+                <div class="search-option">
+                    <button class="option-btn active" id="phoneOption">
+                        <i class="fas fa-phone-square-alt"></i> ANALYZE PHONE ID
+                    </button>
+                </div>
+                <div class="search-option">
+                    <button class="option-btn" id="cnicOption">
+                        <i class="fas fa-id-badge"></i> ANALYZE CNIC ID
+                    </button>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="searchInput" placeholder="ENTER IDENTIFIER..." maxlength="11">
+                <button id="searchBtn">INITIATE ANALYSIS</button>
+            </div>
+            
+            <div class="result-container" id="resultContainer">
+                <div class="no-data"><i class="fas fa-sync-alt fa-spin"></i> SYSTEM STANDBY: AWAITING INPUT</div>
+            </div>
+            
+            <div class="more-tools">
+                <a href="https://whatsapp.com/channel/0029Vb6Qyym7YSd3VRCxxQ1B" class="more-tools-btn" target="_blank">JOIN THE CYBER-HUB <i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <div class="created-by">
+                POWERED BY MUZAMMIL'S ALGORITHMS <i class="fas fa-microchip"></i>
+            </div>
+        </div>
+        
+        <footer>
+            <p>MUZAMMIL-MD CYBER INTELLIGENCE © 2023 | ACCESS PROTOCOL: SECURE</p>
+            <p>DATA INTEGRITY ASSURED</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Matrix background effect
+            function createMatrixEffect() {
+                const matrixBg = document.getElementById('matrixBg');
+                const chars = '0123456789ABCDEF!@#$%^&*()_+{}[]|:;<,./?`~'; // More varied cyber chars
+                
+                for (let i = 0; i < 70; i++) { // More characters for dense effect
+                    const char = document.createElement('div');
+                    char.className = 'matrix-char';
+                    char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                    char.style.left = Math.random() * 100 + 'vw';
+                    char.style.animationDuration = (Math.random() * 5 + 2) + 's'; // Faster fall
+                    char.style.animationDelay = Math.random() * 2 + 's'; // Less delay
+                    matrixBg.appendChild(char);
+                }
+            }
+            
+            createMatrixEffect();
+            
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-mode');
+                if (document.body.classList.contains('light-mode')) {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i> LIGHT MODE';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i> DARK MODE';
+                }
+            });
+            
+            const searchBtn = document.getElementById('searchBtn');
+            const searchInput = document.getElementById('searchInput');
+            const resultContainer = document.getElementById('resultContainer');
+            const phoneOption = document.getElementById('phoneOption');
+            const cnicOption = document.getElementById('cnicOption');
+            
+            let searchType = 'phone'; // Default search type
+            
+            // Function to show validation errors
+            function showValidationError(title, message, example) {
+                resultContainer.innerHTML = `
+                    <div class="validation-error">
+                        <strong><i class="fas fa-exclamation-circle"></i> ${title}</strong><br>
+                        ${message}
+                        <div class="example-number">REQUIRED FORMAT: ${example}</div>
+                    </div>
+                `;
+            }
+            
+            // Event listeners for search type selection
+            phoneOption.addEventListener('click', function() {
+                searchType = 'phone';
+                phoneOption.classList.add('active');
+                cnicOption.classList.remove('active');
+                searchInput.placeholder = 'ENTER 11-DIGIT PHONE NUMBER (e.g., 03XXXXXXXXX)';
+                searchInput.maxLength = 11;
+                searchInput.value = '';
+                resultContainer.innerHTML = '<div class="no-data"><i class="fas fa-terminal"></i> READY FOR PHONE ID ANALYSIS</div>';
+            });
+            
+            cnicOption.addEventListener('click', function() {
+                searchType = 'cnic';
+                cnicOption.classList.add('active');
+                phoneOption.classList.remove('active');
+                searchInput.placeholder = 'ENTER 13-DIGIT CNIC NUMBER (e.g., XXXXXXXXXXXXX)';
+                searchInput.maxLength = 13;
+                searchInput.value = '';
+                resultContainer.innerHTML = '<div class="no-data"><i class="fas fa-terminal"></i> READY FOR CNIC ID ANALYSIS</div>';
+            });
+            
+            searchBtn.addEventListener('click', searchInfo);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchInfo();
+                }
+            });
+            
+            function searchInfo() {
+                const searchValue = searchInput.value.trim();
+                
+                if (!searchValue) {
+                    showValidationError('INPUT MISSING', `PLEASE PROVIDE A ${searchType === 'phone' ? 'PHONE NUMBER' : 'CNIC NUMBER'}`, '03XXXXXXXXX / XXXXXXXXXXXXX');
+                    return;
+                }
+                
+                // Phone number validation
+                if (searchType === 'phone') {
+                    if (!/^\d+$/.test(searchValue)) {
+                        showValidationError('INVALID PHONE FORMAT', 'Phone number must contain only digits.', '03123456789');
+                        return;
+                    }
+                    if (searchValue.length !== 11) {
+                        showValidationError('INVALID PHONE LENGTH', 'Phone number must be exactly 11 digits.', '03123456789');
+                        return;
+                    }
+                }
+                
+                // CNIC validation
+                if (searchType === 'cnic') {
+                    if (!/^\d+$/.test(searchValue)) {
+                        showValidationError('INVALID CNIC FORMAT', 'CNIC must contain only digits.', '4210100000000');
+                        return;
+                    }
+                    if (searchValue.length !== 13) {
+                        showValidationError('INVALID CNIC LENGTH', 'CNIC must be exactly 13 digits.', '4210100000000');
+                        return;
+                    }
+                }
+                
+                // Show loading state with a more tech-oriented message
+                resultContainer.innerHTML = `
+                    <div class="loading">
+                        <i class="fas fa-spinner"></i> ACCESSING SECURE DATASTREAM... PROCESSING INQUIRY
+                    </div>
+                `;
+                
+                // --- SIMULATED DATA FETCH (replace with real API call if available) ---
+                
+                // Simulating a network delay
+                setTimeout(() => {
+                    const sampleData = getSampleData(searchType, searchValue);
+                    
+                    if (sampleData) {
+                        displayResults(sampleData);
+                    } else {
+                        resultContainer.innerHTML = `<div class="no-data">
+                            <i class="fas fa-exclamation-triangle"></i> DATA NOT FOUND: ${searchValue}
+                            <div class="example-number">ID NOT RECOGNIZED IN DATABASE.</div>
+                        </div>`;
+                    }
+                }, 2000); // 2 second delay for realism
+            }
+            
+            function getSampleData(type, value) {
+                // This is placeholder data for demonstration
+                if (type === 'phone' && value === '03001234567') {
+                    return {
+                        searchType: 'Phone',
+                        searchQuery: '03001234567',
+                        CNIC: '42101-1234567-1',
+                        Name: 'MUZAMMIL HUSSAIN (ENCRYPTED)',
+                        Address: 'DATA STREAM: KARACHI, SINDH, PAKISTAN',
+                        Operator: 'NETWORK: JAZZ COMMUNICATIONS',
+                        RegistrationDate: 'ACCESS DATE: 2020.01.01',
+                        Status: 'STATUS: ACTIVE [ONLINE]',
+                        TotalNumbers: 'TOTAL NUMBERS: 08'
+                    };
+                }
+                
+                if (type === 'cnic' && value === '4210112345671') {
+                    return {
+                        searchType: 'CNIC',
+                        searchQuery: '4210112345671',
+                        Name: 'MUZAMMIL HUSSAIN (PRIMARY RECORD)',
+                        FatherName: 'ALI AHMED (REFERENCE)',
+                        DOB: 'DATE OF BIRTH: 1995.10.23',
+                        Address: 'RESIDENCE: KARACHI, SINDH, PAKISTAN',
+                        IssueDate: 'ID ISSUED: 2015.05.20',
+                        ExpiryDate: 'ID EXPIRES: 2030.05.20',
+                        TotalNumbers: 'TOTAL NUMBERS: 08',
+                        NumbersList: ['[01] 03001234567 [JAZZ]', '[02] 03217654321 [ZONG]', '[03] 03338888888 [TELENOR]', '[04] 03451122334 [UFONE]']
+                    };
+                }
+                
+                return null;
+            }
+            
+            function displayResults(data) {
+                let html = '';
+                
+                if (data.searchType === 'Phone') {
+                    html = `
+                        <h3 class="numbers-count" style="color: var(--success-color);"><i class="fas fa-check-circle"></i> PHONE ID ANALYSIS COMPLETE</h3>
+                        <div class="result-row"><div class="result-label">NAME:</div><div class="result-value">${data.Name}</div></div>
+                        <div class="result-row"><div class="result-label">CNIC:</div><div class="result-value">${data.CNIC}</div></div>
+                        <div class="result-row"><div class="result-label">ADDRESS:</div><div class="result-value">${data.Address}</div></div>
+                        <div class="result-row"><div class="result-label">OPERATOR:</div><div class="result-value">${data.Operator}</div></div>
+                        <div class="result-row"><div class="result-label">REGISTRATION:</div><div class="result-value">${data.RegistrationDate}</div></div>
+                        <div class="result-row"><div class="result-label">STATUS:</div><div class="result-value">${data.Status}</div></div>
+                    `;
+                } else if (data.searchType === 'CNIC') {
+                    html = `
+                        <h3 class="numbers-count" style="color: var(--success-color);"><i class="fas fa-check-circle"></i> CNIC ID ANALYSIS COMPLETE | ${data.TotalNumbers} NUMBERS DETECTED</h3>
+                        <div class="result-row"><div class="result-label">NAME:</div><div class="result-value">${data.Name}</div></div>
+                        <div class="result-row"><div class="result-label">FATHER'S NAME:</div><div class="result-value">${data.FatherName}</div></div>
+                        <div class="result-row"><div class="result-label">DOB:</div><div class="result-value">${data.DOB}</div></div>
+                        <div class="result-row"><div class="result-label">ADDRESS:</div><div class="result-value">${data.Address}</div></div>
+                        <div class="result-row"><div class="result-label">ID EXPIRATION:</div><div class="result-value">${data.ExpiryDate}</div></div>
+                        <div class="result-row" style="border-bottom: none;"><div class="result-label" style="width: 100%; margin-bottom: 10px;">ASSOCIATED NUMBERS:</div><div class="result-value" style="flex: unset; width: 100%;">
+                    `;
+                    data.NumbersList.forEach((num) => {
+                        html += `<div class="number-item">${num}</div>`;
+                    });
+                    html += `</div></div>`;
+                }
+                
+                resultContainer.innerHTML = html;
+            }
+        });
+    </script>
+</body>
+</html>
