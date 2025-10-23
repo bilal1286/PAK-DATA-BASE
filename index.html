@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUZAMMIL-MD - ULTIMATE VIP CONSOLE</title>
+    <title>MUZAMMIL-MD - VIP CONSOLE (INSTANT ACCESS)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Global Reset and Font */
@@ -25,10 +25,11 @@
             --vip-gold: #FFD700; /* Electric Gold for VIP elements */
             --text-secondary: #14D0FF; /* Cyber Blue */
             --accent-glow: rgba(0, 255, 128, 0.7); 
-            --gold-glow: rgba(255, 215, 0, 0.7); /* Gold glow for VIP */
+            --gold-glow: rgba(255, 215, 0, 0.7); 
             --button-bg: #2b0864; 
-            --button-hover-bg: #4f0a99; /* Slightly lighter purple on hover */
+            --button-hover-bg: #4f0a99; 
             --button-text-hover: #10002b; 
+            --error-color: #FF3333;
         }
         
         body {
@@ -44,60 +45,64 @@
 
         /* Dynamic Grid Background */
         .matrix-bg {
-            /* Kept same as before */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1; 
+            background-image: 
+                radial-gradient(var(--text-secondary) 1px, transparent 1px),
+                radial-gradient(var(--text-secondary) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            filter: blur(0.5px);
         }
         
-        /* Lock Screen Styles (Ensure it works first) */
-        #accessLockScreen {
-            /* ... (styles remain for lock screen) ... */
-            background: var(--bg-primary); 
-            z-index: 100;
-            display: flex; 
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            flex-direction: column;
-        }
-
-        /* ... (lock-content and h2/p styles) ... */
-
-        .whatsapp-unlock-btn {
-            /* Kept the neon green for the bypass key */
-            background: var(--text-primary); 
-            color: var(--bg-primary); 
-        }
-
-        /* --- MAIN TOOL STYLES --- */
+        /* --- MAIN TOOL STYLES (Now default and visible) --- */
         .container {
             max-width: 950px;
             margin: 0 auto;
             position: relative;
             z-index: 10;
-            display: none; 
+            display: flex; /* INSTANTLY VISIBLE */
             flex: 1;
+            flex-direction: column; /* Ensure header and tool stack */
             padding-top: 20px;
         }
 
         header {
-            /* ... (styles remain for header) ... */
+            text-align: center;
+            padding: 30px;
+            background: var(--bg-secondary);
+            box-shadow: 0 0 50px var(--gold-glow);
+            border: 3px solid var(--text-secondary);
+            border-radius: 10px;
+            margin-bottom: 40px;
         }
         
         h1 {
-            color: var(--vip-gold); /* Header H1 is now VIP Gold */
+            font-size: 4.5rem; 
+            color: var(--vip-gold); 
             text-shadow: 0 0 30px var(--gold-glow);
             letter-spacing: 8px;
+            font-weight: 900;
             transform: skew(-5deg); 
         }
         
         .tagline {
+            font-size: 1.8rem;
             color: var(--text-secondary);
+            margin-top: 10px;
         }
         
         .tool-container {
             background: var(--bg-secondary);
             padding: 40px;
-            box-shadow: 0 0 40px var(--gold-glow); /* Gold box glow */
-            border: 3px solid var(--vip-gold); /* Gold border */
+            box-shadow: 0 0 40px var(--gold-glow);
+            border: 3px solid var(--vip-gold); 
             border-radius: 10px;
         }
         
@@ -107,18 +112,19 @@
             border-bottom: 3px solid var(--text-secondary);
             text-shadow: 0 0 18px var(--accent-glow);
             margin-bottom: 30px;
+            text-align: center;
         }
 
-        /* FIX 1: Ensure buttons are not cut off and layout is clean */
+        /* Layout for buttons (Vertical Stack) */
         .search-options {
             display: flex;
-            flex-direction: column; /* Stack buttons vertically on all devices */
-            gap: 15px; /* Spacing between the buttons */
+            flex-direction: column; 
+            gap: 15px; 
             margin-bottom: 25px;
         }
 
         .search-option {
-            width: 100%; /* Full width for each button container */
+            width: 100%; 
         }
         
         .option-btn {
@@ -130,25 +136,26 @@
             font-weight: 700;
             transform: skew(-5deg);
             cursor: pointer;
+            text-align: left; /* Align text to left for clean look */
         }
         
         .option-btn:hover {
             background: var(--button-hover-bg);
         }
 
-        /* FIX 2: The VIP Button Colour */
+        /* The VIP Active Button Colour */
         .option-btn.active {
-            background: var(--vip-gold); /* ACTIVE BUTTON IS ELECTRIC GOLD */
-            color: var(--bg-primary); /* Dark Purple text on Gold */
+            background: var(--vip-gold); 
+            color: var(--bg-primary); 
             border-color: var(--text-secondary);
             box-shadow: 0 0 25px var(--gold-glow);
             transform: skew(-5deg) scale(1.01);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
-        /* FIX 3: Input/Search Group Visibility */
         .input-group {
             display: flex;
-            margin-bottom: 25px; /* Add margin to separate from results */
+            margin-bottom: 25px; 
             width: 100%;
         }
 
@@ -168,7 +175,7 @@
             padding: 15px 25px;
             background: var(--text-secondary); 
             color: var(--bg-primary); 
-            border: 2px solid var(--vip-gold); /* Search button is Cyber Blue with Gold border */
+            border: 2px solid var(--vip-gold); 
             font-weight: 900;
             border-radius: 0 4px 4px 0;
             letter-spacing: 1px;
@@ -182,7 +189,6 @@
             color: var(--bg-primary);
             box-shadow: 0 0 40px var(--gold-glow);
             border-color: var(--text-secondary);
-            top: 0; 
         }
 
         .result-container {
@@ -201,9 +207,6 @@
             border-bottom: 1px dashed var(--text-secondary); 
             font-size: 1.1rem;
         }
-        .result-row:last-child {
-            border-bottom: none;
-        }
         
         .result-label {
             color: var(--text-secondary);
@@ -212,15 +215,14 @@
         }
 
         .result-value {
-            color: var(--vip-gold); /* Data output in Gold */
+            color: var(--vip-gold); 
             width: 60%;
             text-align: right;
         }
         
-        /* FIX 4: Clarity for System Architect (Footer Fix) */
         .created-by {
             font-size: 1.4rem;
-            color: var(--vip-gold); /* Name in VIP Gold */
+            color: var(--vip-gold); 
             text-shadow: 0 0 12px var(--gold-glow);
             text-align: center;
             margin-top: 20px;
@@ -231,6 +233,7 @@
             font-size: 0.9rem;
             color: var(--text-secondary);
             margin-top: 20px;
+            padding-bottom: 10px;
         }
         
         /* Mobile Fixes */
@@ -240,16 +243,22 @@
             .tool-container { padding: 20px; }
             .tool-title { font-size: 2rem; }
 
-            /* Fix mobile input group breaking */
             .input-group {
                 flex-direction: column;
             }
             input, button#searchBtn {
                 width: 100%;
-                border-radius: 4px; /* No more rounded corners */
+                border-radius: 4px; 
             }
             input {
                 margin-bottom: 10px;
+            }
+            .option-btn {
+                transform: skew(0);
+                text-align: center;
+            }
+            .option-btn.active {
+                transform: skew(0) scale(1.01);
             }
         }
     </style>
@@ -257,26 +266,10 @@
 <body>
     <div class="matrix-bg"></div>
 
-    <div id="accessLockScreen">
-        <div class="lock-content">
-            <h2><i class="fas fa-microchip"></i> QUANTUM INTERFACE OFFLINE <i class="fas fa-microchip"></i></h2>
-            <p>ACCESS DENIED: INITIATE BYPASS CODE</p>
-            <a href="https://whatsapp.com/channel/0029Vb6Qyym7YSd3VRCxxQ1B" target="_blank" class="whatsapp-unlock-btn" id="unlockButton">
-                <i class="fab fa-whatsapp"></i> GENERATE BYPASS KEY (JOIN NETWORK)
-            </a>
-            <p style="margin-top: 35px; font-size: 1.2rem; color: var(--text-secondary); text-shadow: 0 0 5px rgba(20, 208, 255, 0.5);">
-                *Bypass required. Obtain key, then **REFRESH** to load the interface.*
-            </p>
-        </div>
-    </div>
-    
     <div class="container" id="mainContent">
         <header>
             <h1>MUZAMMIL-MD</h1>
             <p class="tagline">ULTIMATE VIP DATA RETRIEVAL CONSOLE V5.0</p>
-            <button class="theme-toggle" id="themeToggle" style="opacity: 0.1;">
-                <i class="fas fa-moon"></i> DARK MODE
-            </button>
         </header>
         
         <div class="tool-container">
@@ -317,30 +310,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const accessLockScreen = document.getElementById('accessLockScreen');
-            const mainContent = document.getElementById('mainContent');
-            const unlockButton = document.getElementById('unlockButton');
-
-            // --- Access Control Logic (Fixed) ---
-            const ACCESS_KEY = 'muzammil_quantum_access_granted';
-
-            function checkAccess() {
-                if (localStorage.getItem(ACCESS_KEY) === 'true') {
-                    accessLockScreen.style.display = 'none';
-                    mainContent.style.display = 'flex';
-                } else {
-                    accessLockScreen.style.display = 'flex';
-                    mainContent.style.display = 'none';
-                }
-            }
-
-            unlockButton.addEventListener('click', function() {
-                localStorage.setItem(ACCESS_KEY, 'true'); 
-            });
-            
-            checkAccess();
-
-            // --- Main Tool Functionality ---
+            // Access check removed
             
             const searchBtn = document.getElementById('searchBtn');
             const searchInput = document.getElementById('searchInput');
@@ -389,14 +359,14 @@
             function searchInfo() {
                 const searchValue = searchInput.value.trim();
                 
-                // Validation logic (kept the same)
+                // Validation logic
                 if (!searchValue) {
                     resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);"><i class="fas fa-exclamation-triangle"></i> ERROR: INPUT MISSING. REQUIRED: ${searchType === 'phone' ? '03XXXXXXXXX' : 'XXXXXXXXXXXXX'}</div>`;
                     return;
                 }
                 
                 // Simulate loading
-                resultContainer.innerHTML = `<div class="loading"><i class="fas fa-spinner fa-spin"></i> QUANTUM DECRYPTION INITIATED... ESTABLISHING CONNECTION TO MUZAMMIL NODE</div>`;
+                resultContainer.innerHTML = `<div class="loading" style="color: var(--vip-gold);"><i class="fas fa-spinner fa-spin"></i> QUANTUM DECRYPTION INITIATED... ESTABLISHING CONNECTION TO MUZAMMIL NODE</div>`;
                 
                 setTimeout(() => {
                     const sampleData = getSampleData(searchType, searchValue);
