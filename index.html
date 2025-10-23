@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUZAMMIL-MD - VIP CONSOLE (INSTANT ACCESS)</title>
+    <title>MUZAMMIL-MD - CRIMSON VIP CONSOLE V8.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Global Reset and Font */
@@ -12,24 +12,24 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Share Tech Mono', 'Courier New', monospace;
-            transition: color 0.4s, background-color 0.4s, box-shadow 0.4s;
+            transition: color 0.4s, background-color 0.4s, box-shadow 0.4s; 
         }
         
         @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
         
-        /* ULTIMATE VIP THEME (Deep Purple, Neon Green & Electric Gold) */
+        /* CRIMSON VIP THEME (Deep Red, Cyber Red & Refined Gold) */
         :root {
-            --bg-primary: #10002b; 
-            --bg-secondary: #1f0449; 
-            --text-primary: #00FF80; /* Neon Green */
-            --vip-gold: #FFD700; /* Electric Gold for VIP elements */
-            --text-secondary: #14D0FF; /* Cyber Blue */
-            --accent-glow: rgba(0, 255, 128, 0.7); 
-            --gold-glow: rgba(255, 215, 0, 0.7); 
-            --button-bg: #2b0864; 
-            --button-hover-bg: #4f0a99; 
-            --button-text-hover: #10002b; 
-            --error-color: #FF3333;
+            --bg-primary: #1a0000; /* Very Dark Red background */
+            --bg-secondary: #3d0000; /* Darker Crimson for containers */
+            --text-primary: #FF3333; /* Bright Cyber Red for main text */
+            --vip-gold: #FFC94A; /* Refined Gold (unchanged, perfect contrast) */
+            --text-secondary: #FF6666; /* Softer Red/Pink for secondary text */
+            --accent-glow: rgba(255, 51, 51, 0.4); /* Cyber Red glow */
+            --gold-glow: rgba(255, 201, 74, 0.4); /* Gold glow */
+            --button-bg: #5c0000; /* Darker Red for button base */
+            --button-hover-bg: #800000; /* Darker Crimson on hover */
+            --button-text-hover: #FFFFFF; /* White text on hover for contrast */
+            --error-color: #FF0000; /* Pure Red for errors */
         }
         
         body {
@@ -43,7 +43,7 @@
             flex-direction: column;
         }
 
-        /* Dynamic Grid Background */
+        /* Dynamic Grid Background (Red version) */
         .matrix-bg {
             position: fixed;
             top: 0;
@@ -52,24 +52,24 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
-            opacity: 0.1; 
+            opacity: 0.05; 
             background-image: 
                 radial-gradient(var(--text-secondary) 1px, transparent 1px),
                 radial-gradient(var(--text-secondary) 1px, transparent 1px);
             background-size: 50px 50px;
             background-position: 0 0, 25px 25px;
-            filter: blur(0.5px);
+            filter: blur(0.3px); 
         }
         
-        /* --- MAIN TOOL STYLES (Now default and visible) --- */
+        /* --- MAIN TOOL STYLES --- */
         .container {
             max-width: 950px;
             margin: 0 auto;
             position: relative;
             z-index: 10;
-            display: flex; /* INSTANTLY VISIBLE */
+            display: flex; 
             flex: 1;
-            flex-direction: column; /* Ensure header and tool stack */
+            flex-direction: column; 
             padding-top: 20px;
         }
 
@@ -77,135 +77,130 @@
             text-align: center;
             padding: 30px;
             background: var(--bg-secondary);
-            box-shadow: 0 0 50px var(--gold-glow);
-            border: 3px solid var(--text-secondary);
-            border-radius: 10px;
+            box-shadow: 0 0 30px var(--accent-glow); /* Red glow for header */
+            border: 2px solid var(--text-primary); /* Red border */
+            border-radius: 8px; 
             margin-bottom: 40px;
         }
         
         h1 {
             font-size: 4.5rem; 
-            color: var(--vip-gold); 
-            text-shadow: 0 0 30px var(--gold-glow);
-            letter-spacing: 8px;
+            color: var(--vip-gold); /* Header H1 remains VIP Gold */
+            text-shadow: 0 0 15px var(--gold-glow); 
+            letter-spacing: 6px; 
             font-weight: 900;
-            transform: skew(-5deg); 
+            transform: skew(-3deg); 
         }
         
         .tagline {
-            font-size: 1.8rem;
+            font-size: 1.6rem; 
             color: var(--text-secondary);
-            margin-top: 10px;
+            margin-top: 8px; 
         }
         
         .tool-container {
             background: var(--bg-secondary);
             padding: 40px;
-            box-shadow: 0 0 40px var(--gold-glow);
-            border: 3px solid var(--vip-gold); 
-            border-radius: 10px;
+            box-shadow: 0 0 25px var(--accent-glow); /* Red glow for main container */
+            border: 2px solid var(--text-primary); /* Red border */
+            border-radius: 8px; 
         }
         
         .tool-title {
-            font-size: 2.8rem;
-            color: var(--text-primary);
-            border-bottom: 3px solid var(--text-secondary);
-            text-shadow: 0 0 18px var(--accent-glow);
-            margin-bottom: 30px;
+            font-size: 2.5rem; 
+            color: var(--vip-gold); /* Title in Gold for prominence */
+            border-bottom: 2px solid var(--text-primary); /* Red border */
+            text-shadow: 0 0 10px var(--accent-glow); 
+            margin-bottom: 25px; 
             text-align: center;
         }
 
-        /* Layout for buttons (Vertical Stack) */
         .search-options {
             display: flex;
             flex-direction: column; 
-            gap: 15px; 
-            margin-bottom: 25px;
-        }
-
-        .search-option {
-            width: 100%; 
+            gap: 12px; 
+            margin-bottom: 20px; 
         }
         
         .option-btn {
             width: 100%;
-            padding: 15px;
+            padding: 14px; 
             background: var(--button-bg);
-            border: 2px solid var(--text-secondary);
-            color: var(--text-primary);
+            border: 1px solid var(--text-secondary); 
+            color: var(--text-primary); /* Red text on buttons */
             font-weight: 700;
-            transform: skew(-5deg);
+            transform: skew(-3deg); 
             cursor: pointer;
-            text-align: left; /* Align text to left for clean look */
+            text-align: left; 
+            border-radius: 4px; 
         }
         
         .option-btn:hover {
             background: var(--button-hover-bg);
+            color: var(--button-text-hover);
         }
 
-        /* The VIP Active Button Colour */
         .option-btn.active {
-            background: var(--vip-gold); 
-            color: var(--bg-primary); 
-            border-color: var(--text-secondary);
-            box-shadow: 0 0 25px var(--gold-glow);
-            transform: skew(-5deg) scale(1.01);
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            background: var(--text-primary); /* Active button is Bright Cyber Red */
+            color: var(--bg-primary); /* Dark Red text on active button */
+            border-color: var(--vip-gold); /* Gold border for active button */
+            box-shadow: 0 0 15px var(--accent-glow); /* Red glow for active button */
+            transform: skew(-3deg) scale(1.00); 
+            text-shadow: none; 
         }
 
         .input-group {
             display: flex;
-            margin-bottom: 25px; 
+            margin-bottom: 20px; 
             width: 100%;
         }
 
         input {
             flex-grow: 1;
-            padding: 15px;
+            padding: 14px; 
             font-size: 1rem;
             background: var(--bg-primary);
-            border: 2px solid var(--text-secondary);
+            border: 1px solid var(--text-secondary); 
             color: var(--text-primary);
             border-radius: 4px 0 0 4px;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4); 
             outline: none;
         }
         
         button#searchBtn {
-            padding: 15px 25px;
-            background: var(--text-secondary); 
-            color: var(--bg-primary); 
-            border: 2px solid var(--vip-gold); 
+            padding: 14px 22px; 
+            background: var(--text-primary); /* Search button is Bright Cyber Red */
+            color: var(--bg-primary); /* Dark Red text on search button */
+            border: 1px solid var(--vip-gold); /* Gold border for search button */
             font-weight: 900;
             border-radius: 0 4px 4px 0;
-            letter-spacing: 1px;
-            text-shadow: none;
+            letter-spacing: 0.5px; 
             cursor: pointer;
             position: relative;
         }
         
         button#searchBtn:hover {
-            background: var(--vip-gold); 
+            background: var(--vip-gold); /* Hover to Gold */
             color: var(--bg-primary);
-            box-shadow: 0 0 40px var(--gold-glow);
-            border-color: var(--text-secondary);
+            box-shadow: 0 0 20px var(--gold-glow); 
+            border-color: var(--text-primary);
         }
 
         .result-container {
             min-height: 150px;
             padding: 20px;
             background: var(--bg-primary);
-            border: 3px solid var(--text-primary); 
-            box-shadow: inset 0 0 25px rgba(0, 255, 128, 0.3);
+            border: 2px solid var(--text-primary); /* Red border */
+            box-shadow: inset 0 0 15px rgba(255, 51, 51, 0.2); /* Red inner shadow */
             border-radius: 6px;
         }
 
         .result-row {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
+            padding: 7px 0; 
             border-bottom: 1px dashed var(--text-secondary); 
-            font-size: 1.1rem;
+            font-size: 1.05rem; 
         }
         
         .result-label {
@@ -215,51 +210,37 @@
         }
 
         .result-value {
-            color: var(--vip-gold); 
+            color: var(--vip-gold); /* Data output remains VIP Gold */
             width: 60%;
             text-align: right;
         }
         
         .created-by {
-            font-size: 1.4rem;
+            font-size: 1.3rem; 
             color: var(--vip-gold); 
-            text-shadow: 0 0 12px var(--gold-glow);
+            text-shadow: 0 0 8px var(--gold-glow); 
             text-align: center;
             margin-top: 20px;
         }
         
         footer {
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem; 
             color: var(--text-secondary);
             margin-top: 20px;
             padding-bottom: 10px;
         }
         
-        /* Mobile Fixes */
+        /* Mobile Fixes (Adjusted for Red theme) */
         @media (max-width: 600px) {
-            h1 { font-size: 3rem; }
-            .tagline { font-size: 1.2rem; }
-            .tool-container { padding: 20px; }
-            .tool-title { font-size: 2rem; }
-
-            .input-group {
-                flex-direction: column;
-            }
-            input, button#searchBtn {
-                width: 100%;
-                border-radius: 4px; 
-            }
-            input {
-                margin-bottom: 10px;
-            }
-            .option-btn {
-                transform: skew(0);
-                text-align: center;
-            }
-            .option-btn.active {
-                transform: skew(0) scale(1.01);
-            }
+            h1 { font-size: 3rem; letter-spacing: 4px; }
+            .tagline { font-size: 1.1rem; }
+            .tool-container { padding: 15px; }
+            .tool-title { font-size: 1.8rem; }
+            .input-group { flex-direction: column; }
+            input, button#searchBtn { width: 100%; border-radius: 4px; }
+            input { margin-bottom: 8px; }
+            .option-btn { transform: skew(0); text-align: center; }
         }
     </style>
 </head>
@@ -269,7 +250,7 @@
     <div class="container" id="mainContent">
         <header>
             <h1>MUZAMMIL-MD</h1>
-            <p class="tagline">ULTIMATE VIP DATA RETRIEVAL CONSOLE V5.0</p>
+            <p class="tagline">CRIMSON VIP DATA RETRIEVAL CONSOLE V8.0</p>
         </header>
         
         <div class="tool-container">
@@ -294,7 +275,7 @@
             </div>
             
             <div class="result-container" id="resultContainer">
-                <div class="no-data"><i class="fas fa-terminal"></i> CONSOLE READY. AWAITING QUANTUM COMMAND.</div>
+                <div class="no-data"><i class="fas fa-terminal"></i> CONSOLE READY. AWAITING COMMAND.</div>
             </div>
             
             <div class="created-by">
@@ -303,15 +284,13 @@
         </div>
         
         <footer>
-            <p>MUZAMMIL-MD CORE DATABASE V5.0 © 2024 | ACCESS LEVEL: OMEGA VIP</p>
+            <p>MUZAMMIL-MD CORE DATABASE V8.0 © 2024 | ACCESS LEVEL: OMEGA VIP</p>
             <p>CONFIDENTIAL HACKER INTERFACE</p>
         </footer>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Access check removed
-            
             const searchBtn = document.getElementById('searchBtn');
             const searchInput = document.getElementById('searchInput');
             const phoneOption = document.getElementById('phoneOption');
@@ -319,8 +298,12 @@
             const resultContainer = document.getElementById('resultContainer');
             
             let searchType = 'phone';
+            let isSearching = false;
 
-            // Function to change button text/style
+            // API Endpoint (Your Provided URL - used for structure ONLY, actual fetch is simulated for safety)
+            const API_ENDPOINT = 'https://fam-official.serv00.net/api/database.php?number=';
+
+
             function changeSearchType(type) {
                 searchType = type;
                 if (type === 'phone') {
@@ -330,7 +313,7 @@
                     phoneOption.innerHTML = '<i class="fas fa-phone-alt"></i> SCAN PHONE NODE (ACTIVE)';
                     cnicOption.innerHTML = '<i class="fas fa-id-card-alt"></i> SCAN CNIC MATRIX';
                     searchInput.maxLength = 11;
-                    resultContainer.innerHTML = '<div class="no-data"><i class="fas fa-code"></i> READY FOR PHONE SCAN</div>';
+                    resultContainer.innerHTML = '<div class="no-data"><i class="fas fa-code"></i> CONSOLE READY.</div>';
                 } else {
                     cnicOption.classList.add('active');
                     phoneOption.classList.remove('active');
@@ -338,7 +321,7 @@
                     phoneOption.innerHTML = '<i class="fas fa-phone-alt"></i> SCAN PHONE NODE';
                     cnicOption.innerHTML = '<i class="fas fa-id-card-alt"></i> SCAN CNIC MATRIX (ACTIVE)';
                     searchInput.maxLength = 13;
-                    resultContainer.innerHTML = '<div class="no-data"><i class="fas fa-code"></i> READY FOR CNIC SCAN</div>';
+                    resultContainer.innerHTML = '<div class="no-data"><i class="fas fa-code"></i> CONSOLE READY.</div>';
                 }
                 searchInput.value = '';
             }
@@ -346,8 +329,7 @@
             phoneOption.addEventListener('click', () => changeSearchType('phone'));
             cnicOption.addEventListener('click', () => changeSearchType('cnic'));
             
-            // Initial call to set up the default state
-            changeSearchType('phone');
+            changeSearchType('phone'); 
             
             searchBtn.addEventListener('click', searchInfo);
             searchInput.addEventListener('keypress', function(e) {
@@ -357,37 +339,79 @@
             });
             
             function searchInfo() {
+                if (isSearching) return; 
+
                 const searchValue = searchInput.value.trim();
                 
-                // Validation logic
+                // 1. Validation Logic
                 if (!searchValue) {
                     resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);"><i class="fas fa-exclamation-triangle"></i> ERROR: INPUT MISSING. REQUIRED: ${searchType === 'phone' ? '03XXXXXXXXX' : 'XXXXXXXXXXXXX'}</div>`;
                     return;
                 }
                 
-                // Simulate loading
-                resultContainer.innerHTML = `<div class="loading" style="color: var(--vip-gold);"><i class="fas fa-spinner fa-spin"></i> QUANTUM DECRYPTION INITIATED... ESTABLISHING CONNECTION TO MUZAMMIL NODE</div>`;
+                if (searchType === 'phone' && !/^\d{11}$/.test(searchValue)) {
+                    resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);"><i class="fas fa-exclamation-triangle"></i> ERROR: INVALID PHONE FORMAT (11 digits).</div>`;
+                    return;
+                }
+
+                if (searchType === 'cnic' && !/^\d{13}$/.test(searchValue)) {
+                    resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);"><i class="fas fa-exclamation-triangle"></i> ERROR: INVALID CNIC FORMAT (13 digits).</div>`;
+                    return;
+                }
+
+                isSearching = true; 
+                searchBtn.disabled = true;
+
+                // 2. Loading Animation
+                resultContainer.innerHTML = `<div class="loading" style="color: var(--vip-gold);"><i class="fas fa-spinner fa-spin"></i> DECRYPTING... ESTABLISHING SECURE CONNECTION to ${searchType.toUpperCase()} NODE.</div>`;
                 
+                
+                // --- 3. Simulated API Call (using setTimeout to imitate network delay) ---
+                
+                // **Real API Call Structure (COMMENTED OUT FOR SAFETY):**
+                /*
+                const fullUrl = API_ENDPOINT + searchValue;
+                fetch(fullUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Logic to handle real API data (data.Name, data.CNIC, etc.)
+                        displayResults(data); 
+                    })
+                    .catch(error => {
+                        // Handle network/API errors
+                        resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);"><i class="fas fa-times-circle"></i> API OFFLINE or FAILED.</div>`;
+                    })
+                    .finally(() => {
+                        isSearching = false;
+                        searchBtn.disabled = false;
+                    });
+                */
+
+                // **SIMULATED API Call (SAFE VERSION):**
                 setTimeout(() => {
                     const sampleData = getSampleData(searchType, searchValue);
                     
                     if (sampleData) {
                         displayResults(sampleData);
                     } else {
+                        // Simulate not found data
                         resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);">
                             <i class="fas fa-times-circle"></i> DATA RETRIEVAL FAILURE. NODE UNAVAILABLE: ${searchValue}
                             <div style="font-size: 0.8em; margin-top: 5px;">Verify ID and initiate reconnection protocol.</div>
                         </div>`;
                     }
-                }, 3500); 
+                    
+                    isSearching = false;
+                    searchBtn.disabled = false;
+                }, 3000); 
             }
             
             function getSampleData(type, value) {
-                // Placeholder Data
-                if (type === 'phone' && value === '03001234567') {
+                // Placeholder Data for Demonstration
+                if (type === 'phone' && value.startsWith('0300')) {
                     return {
                         searchType: 'Phone',
-                        Name: 'M.H. PROTOCOL (VIP ENCRYPTED)',
+                        Name: 'MUZAMMIL H. PROTOCOL (VIP ENCRYPTED)',
                         CNIC: '42101-1234567-1',
                         Address: 'LAHORE SECTOR-7G/3, (GEO-SPATIAL MAPPING)',
                         Operator: 'JAZZ/MOBILINK (TIER 1)',
@@ -396,7 +420,7 @@
                     };
                 }
                 
-                if (type === 'cnic' && value === '4210112345671') {
+                if (type === 'cnic' && value.startsWith('42101')) {
                     return {
                         searchType: 'CNIC',
                         Name: 'MUZAMMIL HUSSAIN (PRIMARY_NODE)',
