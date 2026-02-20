@@ -1,471 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUZAMMIL-MD - CRIMSON VIP CONSOLE V8.0</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Reset and Font */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Share Tech Mono', 'Courier New', monospace;
-            transition: color 0.4s, background-color 0.4s, box-shadow 0.4s; 
-        }
-        
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-        
-        /* CRIMSON VIP THEME (Deep Red, Cyber Red & Refined Gold) */
-        :root {
-            --bg-primary: #1a0000; /* Very Dark Red background */
-            --bg-secondary: #3d0000; /* Darker Crimson for containers */
-            --text-primary: #FF3333; /* Bright Cyber Red for main text */
-            --vip-gold: #FFC94A; /* Refined Gold (unchanged, perfect contrast) */
-            --text-secondary: #FF6666; /* Softer Red/Pink for secondary text */
-            --accent-glow: rgba(255, 51, 51, 0.4); /* Cyber Red glow */
-            --gold-glow: rgba(255, 201, 74, 0.4); /* Gold glow */
-            --button-bg: #5c0000; /* Darker Red for button base */
-            --button-hover-bg: #800000; /* Darker Crimson on hover */
-            --button-text-hover: #FFFFFF; /* White text on hover for contrast */
-            --error-color: #FF0000; /* Pure Red for errors */
-        }
-        
-        body {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            padding: 20px;
-            overflow-x: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUZAMMIL-MD | ELITE TERMINAL</title>
 
-        /* Dynamic Grid Background (Red version) */
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.05; 
-            background-image: 
-                radial-gradient(var(--text-secondary) 1px, transparent 1px),
-                radial-gradient(var(--text-secondary) 1px, transparent 1px);
-            background-size: 50px 50px;
-            background-position: 0 0, 25px 25px;
-            filter: blur(0.3px); 
-        }
-        
-        /* --- MAIN TOOL STYLES --- */
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-            display: flex; 
-            flex: 1;
-            flex-direction: column; 
-            padding-top: 20px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 
-        header {
-            text-align: center;
-            padding: 30px;
-            background: var(--bg-secondary);
-            box-shadow: 0 0 30px var(--accent-glow); /* Red glow for header */
-            border: 2px solid var(--text-primary); /* Red border */
-            border-radius: 8px; 
-            margin-bottom: 40px;
-        }
-        
-        h1 {
-            font-size: 4.5rem; 
-            color: var(--vip-gold); /* Header H1 remains VIP Gold */
-            text-shadow: 0 0 15px var(--gold-glow); 
-            letter-spacing: 6px; 
-            font-weight: 900;
-            transform: skew(-3deg); 
-        }
-        
-        .tagline {
-            font-size: 1.6rem; 
-            color: var(--text-secondary);
-            margin-top: 8px; 
-        }
-        
-        .tool-container {
-            background: var(--bg-secondary);
-            padding: 40px;
-            box-shadow: 0 0 25px var(--accent-glow); /* Red glow for main container */
-            border: 2px solid var(--text-primary); /* Red border */
-            border-radius: 8px; 
-        }
-        
-        .tool-title {
-            font-size: 2.5rem; 
-            color: var(--vip-gold); /* Title in Gold for prominence */
-            border-bottom: 2px solid var(--text-primary); /* Red border */
-            text-shadow: 0 0 10px var(--accent-glow); 
-            margin-bottom: 25px; 
-            text-align: center;
-        }
+<style>
+:root{
+--primary:#ff1a1a;
+--secondary:#ff4d4d;
+--bg:#050505;
+--glass:rgba(255,0,0,0.06);
+}
 
-        .search-options {
-            display: flex;
-            flex-direction: column; 
-            gap: 12px; 
-            margin-bottom: 20px; 
-        }
-        
-        .option-btn {
-            width: 100%;
-            padding: 14px; 
-            background: var(--button-bg);
-            border: 1px solid var(--text-secondary); 
-            color: var(--text-primary); /* Red text on buttons */
-            font-weight: 700;
-            transform: skew(-3deg); 
-            cursor: pointer;
-            text-align: left; 
-            border-radius: 4px; 
-        }
-        
-        .option-btn:hover {
-            background: var(--button-hover-bg);
-            color: var(--button-text-hover);
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        .option-btn.active {
-            background: var(--text-primary); /* Active button is Bright Cyber Red */
-            color: var(--bg-primary); /* Dark Red text on active button */
-            border-color: var(--vip-gold); /* Gold border for active button */
-            box-shadow: 0 0 15px var(--accent-glow); /* Red glow for active button */
-            transform: skew(-3deg) scale(1.00); 
-            text-shadow: none; 
-        }
+body{
+background:radial-gradient(circle at center,#1a0000 0%,#000 100%);
+font-family:'Rajdhani',sans-serif;
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:100vh;
+color:#fff;
+overflow:hidden;
+}
 
-        .input-group {
-            display: flex;
-            margin-bottom: 20px; 
-            width: 100%;
-        }
+/* ================= INTRO SCREEN ================= */
 
-        input {
-            flex-grow: 1;
-            padding: 14px; 
-            font-size: 1rem;
-            background: var(--bg-primary);
-            border: 1px solid var(--text-secondary); 
-            color: var(--text-primary);
-            border-radius: 4px 0 0 4px;
-            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4); 
-            outline: none;
-        }
-        
-        button#searchBtn {
-            padding: 14px 22px; 
-            background: var(--text-primary); /* Search button is Bright Cyber Red */
-            color: var(--bg-primary); /* Dark Red text on search button */
-            border: 1px solid var(--vip-gold); /* Gold border for search button */
-            font-weight: 900;
-            border-radius: 0 4px 4px 0;
-            letter-spacing: 0.5px; 
-            cursor: pointer;
-            position: relative;
-        }
-        
-        button#searchBtn:hover {
-            background: var(--vip-gold); /* Hover to Gold */
-            color: var(--bg-primary);
-            box-shadow: 0 0 20px var(--gold-glow); 
-            border-color: var(--text-primary);
-        }
+#intro-screen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+animation:fadeOut 3s forwards;
+animation-delay:3s;
+}
 
-        .result-container {
-            min-height: 150px;
-            padding: 20px;
-            background: var(--bg-primary);
-            border: 2px solid var(--text-primary); /* Red border */
-            box-shadow: inset 0 0 15px rgba(255, 51, 51, 0.2); /* Red inner shadow */
-            border-radius: 6px;
-        }
+.intro-text{
+color:#00ff00;
+font-family:monospace;
+font-size:18px;
+text-align:center;
+animation:blink 1s infinite;
+}
 
-        .result-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 7px 0; 
-            border-bottom: 1px dashed var(--text-secondary); 
-            font-size: 1.05rem; 
-        }
-        
-        .result-label {
-            color: var(--text-secondary);
-            font-weight: 700;
-            width: 40%;
-        }
+@keyframes blink{
+0%,100%{opacity:1;}
+50%{opacity:.3;}
+}
 
-        .result-value {
-            color: var(--vip-gold); /* Data output remains VIP Gold */
-            width: 60%;
-            text-align: right;
-        }
-        
-        .created-by {
-            font-size: 1.3rem; 
-            color: var(--vip-gold); 
-            text-shadow: 0 0 8px var(--gold-glow); 
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        footer {
-            text-align: center;
-            font-size: 0.85rem; 
-            color: var(--text-secondary);
-            margin-top: 20px;
-            padding-bottom: 10px;
-        }
-        
-        /* Mobile Fixes (Adjusted for Red theme) */
-        @media (max-width: 600px) {
-            h1 { font-size: 3rem; letter-spacing: 4px; }
-            .tagline { font-size: 1.1rem; }
-            .tool-container { padding: 15px; }
-            .tool-title { font-size: 1.8rem; }
-            .input-group { flex-direction: column; }
-            input, button#searchBtn { width: 100%; border-radius: 4px; }
-            input { margin-bottom: 8px; }
-            .option-btn { transform: skew(0); text-align: center; }
-        }
-    </style>
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
+
+/* ================= MAIN FRAME ================= */
+
+.main-card{
+width:95%;
+max-width:520px;
+padding:35px 30px;
+border-radius:18px;
+background:rgba(10,0,0,0.85);
+border:1px solid var(--primary);
+box-shadow:
+0 0 15px rgba(255,0,0,0.3),
+0 0 60px rgba(255,0,0,0.15);
+backdrop-filter:blur(12px);
+position:relative;
+}
+
+/* ================= VIP OWNER BUTTON ================= */
+
+.vip-owner-btn{
+display:block;
+text-align:center;
+padding:18px;
+margin-bottom:30px;
+border-radius:12px;
+background:#000;
+border:2px solid var(--primary);
+text-decoration:none;
+position:relative;
+overflow:hidden;
+transition:.3s;
+box-shadow:0 0 20px rgba(255,0,0,.4);
+}
+
+.vip-owner-btn::before{
+content:'';
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,0,0,0.4),transparent);
+animation:scan 2s infinite;
+}
+
+@keyframes scan{
+0%{left:-100%;}
+100%{left:100%;}
+}
+
+.vip-owner-btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 35px var(--primary);
+}
+
+.glitch-text{
+color:#fff;
+font-family:'Orbitron',sans-serif;
+font-weight:bold;
+letter-spacing:3px;
+position:relative;
+}
+
+.glitch-text:hover{
+animation:glitch 0.4s infinite;
+}
+
+@keyframes glitch{
+0%{text-shadow:2px 2px red;}
+25%{text-shadow:-2px 2px blue;}
+50%{text-shadow:2px -2px red;}
+75%{text-shadow:-2px -2px blue;}
+100%{text-shadow:2px 2px red;}
+}
+
+/* ================= TITLE ================= */
+
+h1{
+text-align:center;
+font-family:'Orbitron',sans-serif;
+font-size:20px;
+margin-bottom:25px;
+color:#fff;
+text-shadow:0 0 12px var(--primary);
+}
+
+/* ================= TABS ================= */
+
+.tab-group{
+display:flex;
+gap:8px;
+margin-bottom:20px;
+}
+
+.tab{
+flex:1;
+padding:12px;
+border-radius:8px;
+background:#000;
+border:1px solid #222;
+color:var(--secondary);
+cursor:pointer;
+font-family:'Orbitron',sans-serif;
+transition:.3s;
+}
+
+.tab.active{
+background:var(--primary);
+color:#000;
+font-weight:bold;
+}
+
+.tab:hover{
+background:#111;
+}
+
+/* ================= INPUT ================= */
+
+.input-field{
+width:100%;
+padding:14px;
+border-radius:10px;
+background:var(--glass);
+border:1px solid var(--primary);
+color:#fff;
+font-size:16px;
+text-align:center;
+margin-bottom:20px;
+outline:none;
+transition:.3s;
+}
+
+.input-field:focus{
+box-shadow:0 0 10px var(--primary);
+}
+
+/* ================= EXECUTE BUTTON ================= */
+
+.scan-btn{
+width:100%;
+padding:15px;
+border-radius:10px;
+background:linear-gradient(135deg,#ff0000,#990000);
+border:none;
+color:#fff;
+font-weight:bold;
+font-family:'Orbitron',sans-serif;
+letter-spacing:2px;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 0 15px rgba(255,0,0,0.4);
+}
+
+.scan-btn:hover{
+background:linear-gradient(135deg,#ff4d4d,#cc0000);
+box-shadow:0 0 25px var(--primary);
+transform:translateY(-3px);
+}
+
+/* ================= RESULT ================= */
+
+#result-box{
+margin-top:25px;
+display:none;
+animation:fade .5s ease-in-out;
+}
+
+.data-card{
+background:rgba(255,0,0,0.06);
+padding:10px;
+margin-bottom:8px;
+border-left:3px solid var(--primary);
+border-radius:6px;
+}
+
+.key{
+font-size:11px;
+color:var(--secondary);
+text-transform:uppercase;
+}
+
+.val{
+display:block;
+font-size:15px;
+font-weight:bold;
+color:#fff;
+}
+
+.footer{
+margin-top:20px;
+text-align:center;
+font-size:10px;
+color:#555;
+letter-spacing:2px;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(10px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
 </head>
+
 <body>
-    <div class="matrix-bg"></div>
 
-    <div class="container" id="mainContent">
-        <header>
-            <h1>MUZAMMIL-MD</h1>
-            <p class="tagline">CRIMSON VIP DATA RETRIEVAL CONSOLE V8.0</p>
-        </header>
-        
-        <div class="tool-container">
-            <h2 class="tool-title">SECURE SIM DATA PIPELINE // ONLINE</h2>
-            
-            <div class="search-options">
-                <div class="search-option">
-                    <button class="option-btn active" id="phoneOption">
-                        <i class="fas fa-phone-alt"></i> SCAN PHONE NODE (ACTIVE)
-                    </button>
-                </div>
-                <div class="search-option">
-                    <button class="option-btn" id="cnicOption">
-                        <i class="fas fa-id-card-alt"></i> SCAN CNIC MATRIX
-                    </button>
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <input type="text" id="searchInput" placeholder="ENTER 11-DIGIT PHONE NODE ID" maxlength="11">
-                <button id="searchBtn">INITIATE DEEP SCAN</button>
-            </div>
-            
-            <div class="result-container" id="resultContainer">
-                <div class="no-data"><i class="fas fa-terminal"></i> CONSOLE READY. AWAITING COMMAND.</div>
-            </div>
-            
-            <div class="created-by">
-                SYSTEM ARCHITECT: MR. MUZAMMIL <i class="fas fa-crown"></i>
-            </div>
-        </div>
-        
-        <footer>
-            <p>MUZAMMIL-MD CORE DATABASE V8.0 © 2024 | ACCESS LEVEL: OMEGA VIP</p>
-            <p>CONFIDENTIAL HACKER INTERFACE</p>
-        </footer>
-    </div>
+<!-- INTRO SCREEN -->
+<div id="intro-screen">
+<div class="intro-text">
+INITIALIZING SECURE TERMINAL...<br>
+ACCESS GRANTED TO MUZAMMIL-MD
+</div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchBtn = document.getElementById('searchBtn');
-            const searchInput = document.getElementById('searchInput');
-            const phoneOption = document.getElementById('phoneOption');
-            const cnicOption = document.getElementById('cnicOption');
-            const resultContainer = document.getElementById('resultContainer');
-            
-            let searchType = 'phone';
-            let isSearching = false;
+<div class="main-card">
 
-            // API Endpoint (Your Provided URL - used for structure ONLY, actual fetch is simulated for safety)
-            const API_ENDPOINT = 'https://legendxdata.site/ind.php?number=${phone';
+<!-- VIP OWNER BUTTON -->
+<a href="https://wa.me/923293152414" class="vip-owner-btn" target="_blank">
+<span class="glitch-text">CONTACT OWNER</span>
+</a>
 
+<h1>SECURE DATA PROTOCOL</h1>
 
-            function changeSearchType(type) {
-                searchType = type;
-                if (type === 'phone') {
-                    phoneOption.classList.add('active');
-                    cnicOption.classList.remove('active');
-                    searchInput.placeholder = 'ENTER 11-DIGIT PHONE NODE ID';
-                    phoneOption.innerHTML = '<i class="fas fa-phone-alt"></i> SCAN PHONE NODE (ACTIVE)';
-                    cnicOption.innerHTML = '<i class="fas fa-id-card-alt"></i> SCAN CNIC MATRIX';
-                    searchInput.maxLength = 11;
-                    resultContainer.innerHTML = '<div class="no-data"><i class="fas fa-code"></i> CONSOLE READY.</div>';
-                } else {
-                    cnicOption.classList.add('active');
-                    phoneOption.classList.remove('active');
-                    searchInput.placeholder = 'ENTER 13-DIGIT CNIC MATRIX ID';
-                    phoneOption.innerHTML = '<i class="fas fa-phone-alt"></i> SCAN PHONE NODE';
-                    cnicOption.innerHTML = '<i class="fas fa-id-card-alt"></i> SCAN CNIC MATRIX (ACTIVE)';
-                    searchInput.maxLength = 13;
-                    resultContainer.innerHTML = '<div class="no-data"><i class="fas fa-code"></i> CONSOLE READY.</div>';
-                }
-                searchInput.value = '';
-            }
+<div class="tab-group">
+<button class="tab active" onclick="setMode('phone',this)">PHONE</button>
+<button class="tab" onclick="setMode('nic',this)">CNIC</button>
+</div>
 
-            phoneOption.addEventListener('click', () => changeSearchType('phone'));
-            cnicOption.addEventListener('click', () => changeSearchType('cnic'));
-            
-            changeSearchType('phone'); 
-            
-            searchBtn.addEventListener('click', searchInfo);
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    searchInfo();
-                }
-            });
-            
-            function searchInfo() {
-                if (isSearching) return; 
+<input type="text" id="userInput" class="input-field" placeholder="03XXXXXXXXX">
 
-                const searchValue = searchInput.value.trim();
-                
-                // 1. Validation Logic
-                if (!searchValue) {
-                    resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);"><i class="fas fa-exclamation-triangle"></i> ERROR: INPUT MISSING. REQUIRED: ${searchType === 'phone' ? '03XXXXXXXXX' : 'XXXXXXXXXXXXX'}</div>`;
-                    return;
-                }
-                
-                if (searchType === 'phone' && !/^\d{11}$/.test(searchValue)) {
-                    resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);"><i class="fas fa-exclamation-triangle"></i> ERROR: INVALID PHONE FORMAT (11 digits).</div>`;
-                    return;
-                }
+<button class="scan-btn" onclick="startScan()">EXECUTE EXTRACTION</button>
 
-                if (searchType === 'cnic' && !/^\d{13}$/.test(searchValue)) {
-                    resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);"><i class="fas fa-exclamation-triangle"></i> ERROR: INVALID CNIC FORMAT (13 digits).</div>`;
-                    return;
-                }
+<div id="status-msg" style="text-align:center;color:var(--primary);margin-top:15px;font-family:monospace;"></div>
 
-                isSearching = true; 
-                searchBtn.disabled = true;
+<div id="result-box">
+<div id="data-content"></div>
+</div>
 
-                // 2. Loading Animation
-                resultContainer.innerHTML = `<div class="loading" style="color: var(--vip-gold);"><i class="fas fa-spinner fa-spin"></i> DECRYPTING... ESTABLISHING SECURE CONNECTION to ${searchType.toUpperCase()} NODE.</div>`;
-                
-                
-                // --- 3. Simulated API Call (using setTimeout to imitate network delay) ---
-                
-                // **Real API Call Structure (COMMENTED OUT FOR SAFETY):**
-                /*
-                const fullUrl = API_ENDPOINT + searchValue;
-                fetch(fullUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Logic to handle real API data (data.Name, data.CNIC, etc.)
-                        displayResults(data); 
-                    })
-                    .catch(error => {
-                        // Handle network/API errors
-                        resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);"><i class="fas fa-times-circle"></i> API OFFLINE or FAILED.</div>`;
-                    })
-                    .finally(() => {
-                        isSearching = false;
-                        searchBtn.disabled = false;
-                    });
-                */
+<div class="footer">POWERED BY MUZAMMIL-MD</div>
 
-                // **SIMULATED API Call (SAFE VERSION):**
-                setTimeout(() => {
-                    const sampleData = getSampleData(searchType, searchValue);
-                    
-                    if (sampleData) {
-                        displayResults(sampleData);
-                    } else {
-                        // Simulate not found data
-                        resultContainer.innerHTML = `<div class="no-data" style="color: var(--error-color);">
-                            <i class="fas fa-times-circle"></i> DATA RETRIEVAL FAILURE. NODE UNAVAILABLE: ${searchValue}
-                            <div style="font-size: 0.8em; margin-top: 5px;">Verify ID and initiate reconnection protocol.</div>
-                        </div>`;
-                    }
-                    
-                    isSearching = false;
-                    searchBtn.disabled = false;
-                }, 3000); 
-            }
-            
-            function getSampleData(type, value) {
-                // Placeholder Data for Demonstration
-                if (type === 'phone' && value.startsWith('0300')) {
-                    return {
-                        searchType: 'Phone',
-                        Name: 'MUZAMMIL H. PROTOCOL (VIP ENCRYPTED)',
-                        CNIC: '42101-1234567-1',
-                        Address: 'LAHORE SECTOR-7G/3, (GEO-SPATIAL MAPPING)',
-                        Operator: 'JAZZ/MOBILINK (TIER 1)',
-                        RegistrationDate: '2020-01-01',
-                        Status: 'ONLINE'
-                    };
-                }
-                
-                if (type === 'cnic' && value.startsWith('42101')) {
-                    return {
-                        searchType: 'CNIC',
-                        Name: 'MUZAMMIL HUSSAIN (PRIMARY_NODE)',
-                        FatherName: 'ALI AHMED',
-                        DOB: '1995-10-23',
-                        Address: 'LAHORE SECTOR-7G/3, (GEO-SPATIAL MAPPING)',
-                        IssueDate: '2015-05-20',
-                        ExpiryDate: '2030-05-20',
-                        TotalNumbers: '04',
-                        NumbersList: ['03001234567 [JAZZ]', '03217654321 [ZONG]', '03338888888 [TELENOR]', '03451122334 [UFONE]']
-                    };
-                }
-                return null;
-            }
-            
-            function displayResults(data) {
-                let html = '';
-                
-                if (data.searchType === 'Phone') {
-                    html = `
-                        <h3 class="numbers-count" style="color: var(--vip-gold); text-align: center; margin-bottom: 15px;"><i class="fas fa-lock-open"></i> DECRYPT SUCCESS | STATUS: ${data.Status}</h3>
-                        <div class="result-row"><div class="result-label">NODE NAME:</div><div class="result-value">${data.Name}</div></div>
-                        <div class="result-row"><div class="result-label">CNIC MATRIX ID:</div><div class="result-value">${data.CNIC}</div></div>
-                        <div class="result-row"><div class="result-label">LOCATION:</div><div class="result-value">${data.Address}</div></div>
-                        <div class="result-row"><div class="result-label">OPERATOR:</div><div class="result-value">${data.Operator}</div></div>
-                        <div class="result-row"><div class="result-label">REG. DATE:</div><div class="result-value">${data.RegistrationDate}</div></div>
-                    `;
-                } else if (data.searchType === 'CNIC') {
-                    html = `
-                        <h3 class="numbers-count" style="color: var(--vip-gold); text-align: center; margin-bottom: 15px;"><i class="fas fa-lock-open"></i> DECRYPT SUCCESS | ${data.TotalNumbers} NODES MAPPED</h3>
-                        <div class="result-row"><div class="result-label">NAME:</div><div class="result-value">${data.Name}</div></div>
-                        <div class="result-row"><div class="result-label">FATHER'S NAME:</div><div class="result-value">${data.FatherName}</div></div>
-                        <div class="result-row"><div class="result-label">DOB:</div><div class="result-value">${data.DOB}</div></div>
-                        <div class="result-row"><div class="result-label">RESIDENCE:</div><div class="result-value">${data.Address}</div></div>
-                        <div class="result-row" style="border-bottom: none;"><div class="result-label" style="width: 100%; margin-bottom: 10px; color: var(--text-primary);">REGISTERED NODES:</div><div class="result-value" style="flex: unset; width: 100%; text-align: left; color: var(--vip-gold);">
-                    `;
-                    data.NumbersList.forEach((num) => {
-                        html += `<div class="number-item" style="margin-left: 15px;">- ${num}</div>`;
-                    });
-                    html += `</div></div>`;
-                }
-                
-                resultContainer.innerHTML = html;
-            }
-        });
-    </script>
+</div>
+
+<script>
+let currentMode='phone';
+
+function setMode(m,btn){
+currentMode=m;
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+btn.classList.add('active');
+document.getElementById('userInput').placeholder=
+m==='phone'?'03XXXXXXXXX':'42XXXXXXXXXXXXX';
+}
+</script>
+
 </body>
 </html>
