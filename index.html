@@ -3,158 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUZAMMIL-MD | VIP CINEMA PRO</title>
+    <title>MUZAMMIL-MD | ULTRA PREMIUM DOWNLOADER</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Rajdhani:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Rajdhani:wght@500;700&display=swap');
 
-        :root { --neon-red: #ff0000; --darker: #050505; }
-        body { background-color: var(--darker); color: #eee; font-family: 'Rajdhani', sans-serif; }
-        .logo-font { font-family: 'Orbitron', sans-serif; }
-
-        /* Search Bar Glow Fix */
-        .search-container input {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            transition: 0.3s;
-        }
-        .search-container input:focus {
-            border-color: var(--neon-red);
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
-            outline: none;
-            background: rgba(255, 255, 255, 0.1);
+        :root { --neon: #ff003c; --bg: #030303; }
+        body { background-color: var(--bg); color: #fff; font-family: 'Rajdhani', sans-serif; }
+        
+        .premium-border {
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            background: linear-gradient(145deg, #0a0a0a, #111);
+            transition: 0.4s;
         }
 
-        /* Movie Card Red Neon Frame */
-        .neon-card {
-            background: #0a0a0a;
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .movie-card:hover .neon-card {
-            border-color: var(--neon-red);
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
-            transform: translateY(-5px);
+        .premium-border:hover {
+            border-color: var(--neon);
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.2);
+            transform: scale(1.02);
         }
 
-        .q-tag { font-size: 9px; padding: 2px 6px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: #888; }
-        .q-tag.active { background: var(--neon-red); color: white; border-color: var(--neon-red); box-shadow: 0 0 8px var(--neon-red); }
+        .dl-gradient {
+            background: linear-gradient(90deg, #ff003c, #80001e);
+            box-shadow: 0 5px 15px rgba(255, 0, 60, 0.4);
+        }
 
-        .btn-main { background: linear-gradient(90deg, #8b0000, #ff0000); font-weight: 700; transition: 0.3s; }
-        .btn-main:hover { box-shadow: 0 0 20px #ff0000; filter: brightness(1.2); }
+        .dl-gradient:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 5px 25px var(--neon);
+        }
 
-        /* Floating WhatsApp */
-        .whatsapp-vip { position: fixed; bottom: 25px; right: 25px; z-index: 999; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .logo-text { font-family: 'Syncopate', sans-serif; letter-spacing: -1px; }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-anim { animation: float 4s ease-in-out infinite; }
+
+        /* Status Dot */
+        .dot { height: 8px; width: 8px; background-color: #00ff00; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #00ff00; }
     </style>
 </head>
-<body>
+<body class="pb-20">
 
-    <nav class="bg-black/95 border-b-2 border-red-600 sticky top-0 z-[100] backdrop-blur-md">
-        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <span class="bg-red-600 text-white font-black px-2 py-1 rounded logo-font shadow-[0_0_10px_#ff0000]">M-MD</span>
-                <h1 class="text-xl font-bold logo-font tracking-tighter text-white">MUZAMMIL<span class="text-red-600">-MD</span></h1>
+    <nav class="p-6 border-b border-red-900/30 bg-black/80 backdrop-blur-xl sticky top-0 z-[100]">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="p-2 border-2 border-red-600 rounded-lg">
+                    <span class="logo-text text-xl">M-MD</span>
+                </div>
+                <h1 class="text-2xl font-bold logo-text">MUZAMMIL<span class="text-red-600">-MD</span></h1>
             </div>
 
-            <div class="search-container relative w-full max-w-md">
-                <i class="fa fa-search absolute left-4 top-1/2 -translate-y-1/2 text-red-600"></i>
-                <input type="text" id="movieSearch" placeholder="Search Movies by Name..." class="w-full pl-12 pr-4 py-2.5 rounded-full text-sm">
+            <div class="relative w-full md:w-1/3">
+                <input type="text" id="mainSearch" placeholder="Type movie name to get link..." 
+                       class="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg py-3 px-12 focus:border-red-600 focus:outline-none transition-all">
+                <i class="fa fa-search absolute left-4 top-4 text-red-600"></i>
             </div>
 
-            <div class="hidden lg:block text-right">
-                <p class="text-[10px] text-gray-500 font-bold">OWNER SUPPORT</p>
-                <p class="text-red-500 text-xs font-bold">+923293152414</p>
+            <div class="flex items-center gap-4">
+                <div class="text-right">
+                    <p class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">VIP Server</p>
+                    <p class="text-xs font-bold"><span class="dot mr-1"></span> ENCRYPTED</p>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="py-12 text-center">
-        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter italic">NEON <span class="text-red-600">CINEMA</span></h2>
-        <p class="text-gray-500 text-xs tracking-[5px] mt-2 uppercase">Official Muzammil-MD Content Delivery</p>
-    </div>
-
-    <main class="container mx-auto px-4 pb-20">
-        <div id="movie-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8">
-            </div>
-        <div id="no-result" class="hidden text-center py-20 text-gray-500">
-            <i class="fa fa-frown text-4xl mb-4"></i>
-            <p>No Movie Found. Try searching something else!</p>
+    <section class="py-16 text-center">
+        <h2 class="text-5xl md:text-7xl font-black logo-text italic tracking-tighter mb-4">FAST <span class="text-red-600">DL</span> PORTAL</h2>
+        <div class="flex justify-center gap-8 text-xs font-bold text-zinc-500 uppercase tracking-widest">
+            <span><i class="fa fa-bolt text-red-600"></i> 1Gbps Link</span>
+            <span><i class="fa fa-shield-alt text-red-600"></i> Secure</span>
+            <span><i class="fa fa-infinity text-red-600"></i> Unlimited</span>
         </div>
+    </section>
+
+    <main class="container mx-auto px-6">
+        <div id="dl-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
     </main>
 
-    <a href="https://wa.me/923293152414" class="whatsapp-vip">
-        <i class="fab fa-whatsapp text-3xl"></i>
+    <a href="https://wa.me/923293152414" class="fixed bottom-8 right-8 z-[1000] flex items-center gap-3 bg-zinc-900 p-2 pr-6 rounded-full border border-red-600 shadow-2xl float-anim">
+        <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+            <i class="fab fa-whatsapp text-2xl text-white"></i>
+        </div>
+        <div>
+            <p class="text-[10px] text-zinc-500 font-bold leading-none">Need Help?</p>
+            <p class="text-sm font-bold">CONTACT OWNER</p>
+        </div>
     </a>
 
-    <footer class="bg-black py-10 border-t border-red-900/30 text-center">
-        <p class="logo-font text-red-600">MUZAMMIL-MD</p>
-        <p class="text-gray-600 text-[10px] mt-1">CONTACT: 923293152414</p>
-    </footer>
-
     <script>
-        // Full Data List
-        const movieData = [
-            { title: "Hot Spot (2024)", imdb: "7.3", img: "https://pirate.lk/wp-content/uploads/2026/02/lBhGZKyF4PVWemPsD5urEOnFiHz-150x150.jpg", link: "#" },
-            { title: "Ronny – The ruler", imdb: "8.7", img: "https://pirate.lk/wp-content/uploads/2026/01/f3r1lw9WjSZpw5ukwmtHmwM0b4m-150x150.jpg", link: "#" },
-            { title: "Mahavatar Narsimha", imdb: "8.5", img: "https://pirate.lk/wp-content/uploads/2026/01/uGTF87VyfjtwwqRlT2apQg5YnEp-150x150.jpg", link: "#" },
-            { title: "Anora (2024)", imdb: "7.6", img: "https://pirate.lk/wp-content/uploads/2025/03/qh8m8Udz0sCa5gy9VaqfHPh0yPM-150x150.jpg", link: "#" },
-            { title: "Death Whisperer 2", imdb: "6.3", img: "https://pirate.lk/wp-content/uploads/2025/12/A0fHnpVX8vYQCmvETllWJQ30Mi6-150x150.jpg", link: "#" },
-            { title: "Hear Me: Our Summer", imdb: "7.5", img: "https://pirate.lk/wp-content/uploads/2025/12/dNCp17yK9L0pANvKTb6tWECQj4Q-150x150.jpg", link: "#" },
-            { title: "Marco (2024)", imdb: "7.2", img: "https://pirate.lk/wp-content/uploads/2025/02/il3ao5gcF6fZNqo1o9o7lusmEyU-150x150.jpg", link: "#" },
-            { title: "Ibbani Tabbida", imdb: "7.5", img: "https://pirate.lk/wp-content/uploads/2025/12/bvBGnP3L2HuB4RWmOzlPD0G45j9-150x150.jpg", link: "#" },
-            { title: "Eden (2024)", imdb: "6.5", img: "https://pirate.lk/wp-content/uploads/2025/11/jbFEESMVbpJU8IjZBjiWGJdEsxR-150x150.jpg", link: "#" },
-            { title: "Customs Frontline", imdb: "5.5", img: "https://pirate.lk/wp-content/uploads/2025/11/a869Prbl9FEWeWPWSw0Q3phE4Iv-150x150.jpg", link: "#" }
+        const movies = [
+            { title: "Hot Spot (2024)", size: "1.4 GB", quality: "1080p Web-DL", link: "https://pirate.lk/movies/hot-spot-2024-sinhala-sub/" },
+            { title: "Ronny – The ruler", size: "1.2 GB", quality: "720p HD", link: "https://pirate.lk/movies/ronny-the-ruler-2024-sinhala-sub/" },
+            { title: "Mahavatar Narsimha", size: "900 MB", quality: "720p WebRip", link: "https://pirate.lk/movies/mahavatar-narsimha-2024-sinhala-sub/" },
+            { title: "Death Whisperer 2", size: "1.1 GB", quality: "720p HDRip", link: "https://pirate.lk/movies/death-whisperer-2-2024-sinhala-sub/" },
+            { title: "Anora (2024)", size: "1.6 GB", quality: "1080p Bluray", link: "https://pirate.lk/movies/anora-2024-sinhala-sub/" },
+            { title: "Hear Me: Our Summer", size: "1.3 GB", quality: "1080p WebRip", link: "https://pirate.lk/movies/hear-me-our-summer-2024-sinhala-sub/" },
+            { title: "Ibbani Tabbida", size: "1.0 GB", quality: "720p Web-DL", link: "https://pirate.lk/movies/ibbani-tabbida-ileyal-2024-sinhala-sub/" },
+            { title: "Marco (2024)", size: "1.4 GB", quality: "1080p HDRip", link: "https://pirate.lk/movies/marco-2024-sinhala-sub/" }
         ];
 
-        const grid = document.getElementById('movie-grid');
-        const searchInput = document.getElementById('movieSearch');
-        const noResult = document.getElementById('no-result');
+        const container = document.getElementById('dl-container');
+        const searchInput = document.getElementById('mainSearch');
 
-        function displayMovies(filter = '') {
-            grid.innerHTML = '';
-            const filtered = movieData.filter(m => m.title.toLowerCase().includes(filter.toLowerCase()));
-            
-            if(filtered.length === 0) {
-                noResult.classList.remove('hidden');
-            } else {
-                noResult.classList.add('hidden');
-                filtered.forEach(movie => {
-                    grid.innerHTML += `
-                        <div class="movie-card group">
-                            <div class="neon-card rounded-2xl overflow-hidden relative">
-                                <div class="absolute top-2 right-2 z-10 bg-black/80 px-2 py-0.5 rounded text-[10px] font-bold border border-red-600/40">
-                                    ★ ${movie.imdb}
-                                </div>
-                                <div class="relative aspect-[3/4] overflow-hidden">
-                                    <img src="${movie.img}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-                                </div>
-                                <div class="p-4">
-                                    <h4 class="text-sm font-bold truncate text-white mb-3">${movie.title}</h4>
-                                    <div class="flex gap-2 mb-4">
-                                        <span class="q-tag">480p</span>
-                                        <span class="q-tag active">720p</span>
-                                        <span class="q-tag">1080p</span>
-                                    </div>
-                                    <div class="grid grid-cols-2 gap-2">
-                                        <a href="${movie.link}" class="btn-main text-[10px] py-2 rounded-lg text-center uppercase">Watch</a>
-                                        <a href="${movie.link}" class="bg-zinc-800 text-white text-[10px] py-2 rounded-lg text-center uppercase hover:bg-zinc-700 transition">Save</a>
-                                    </div>
-                                </div>
+        function loadDL(term = '') {
+            container.innerHTML = '';
+            const filtered = movies.filter(m => m.title.toLowerCase().includes(term.toLowerCase()));
+
+            filtered.forEach(m => {
+                container.innerHTML += `
+                    <div class="premium-border p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition">
+                            <i class="fa fa-cloud-download-alt text-4xl text-red-600"></i>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-6 text-zinc-100">${m.title}</h3>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="bg-zinc-900/50 p-3 rounded-xl border border-zinc-800">
+                                <p class="text-[10px] text-zinc-500 uppercase font-bold">File Size</p>
+                                <p class="text-lg font-bold text-red-500">${m.size}</p>
+                            </div>
+                            <div class="bg-zinc-900/50 p-3 rounded-xl border border-zinc-800">
+                                <p class="text-[10px] text-zinc-500 uppercase font-bold">Video Quality</p>
+                                <p class="text-lg font-bold text-red-500">${m.quality}</p>
                             </div>
                         </div>
-                    `;
-                });
-            }
+
+                        <div class="flex flex-col gap-3">
+                            <a href="${m.link}" class="dl-gradient w-full py-4 rounded-2xl text-center font-black uppercase tracking-widest text-sm flex items-center justify-center gap-3">
+                                <i class="fa fa-download"></i> Download Movie
+                            </a>
+                            <p class="text-center text-[10px] text-zinc-600 font-bold tracking-[2px]">MIRROR SERVER 01 - ACTIVE</p>
+                        </div>
+                    </div>
+                `;
+            });
         }
 
-        // Search functionality
-        searchInput.addEventListener('input', (e) => displayMovies(e.target.value));
-
-        // Initial Load
-        displayMovies();
+        searchInput.addEventListener('input', (e) => loadDL(e.target.value));
+        loadDL();
     </script>
 </body>
 </html>
