@@ -3,143 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUZAMMIL-MD | VIP ULTRA HD</title>
+    <title>MUZAMMIL-MD | VIP CINEMA PRO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Rajdhani:wght@400;600;700&display=swap');
 
-        :root {
-            --neon-red: #ff0000;
-            --darker: #050505;
-        }
-
-        body {
-            background-color: var(--darker);
-            color: #eee;
-            font-family: 'Rajdhani', sans-serif;
-        }
-
+        :root { --neon-red: #ff0000; --darker: #050505; }
+        body { background-color: var(--darker); color: #eee; font-family: 'Rajdhani', sans-serif; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
 
-        /* VIP Neon Frame */
+        /* Search Bar Glow Fix */
+        .search-container input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+        .search-container input:focus {
+            border-color: var(--neon-red);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Movie Card Red Neon Frame */
         .neon-card {
             background: #0a0a0a;
             border: 1px solid rgba(255, 0, 0, 0.2);
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
             transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .movie-card:hover .neon-card {
             border-color: var(--neon-red);
             box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
             transform: translateY(-5px);
         }
 
-        /* Quality Tags Styling */
-        .q-tag {
-            font-size: 9px;
-            padding: 2px 6px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.2s;
-            color: #888;
-        }
+        .q-tag { font-size: 9px; padding: 2px 6px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: #888; }
+        .q-tag.active { background: var(--neon-red); color: white; border-color: var(--neon-red); box-shadow: 0 0 8px var(--neon-red); }
 
-        .q-tag:hover, .q-tag.active {
-            background: var(--neon-red);
-            color: white;
-            border-color: var(--neon-red);
-            box-shadow: 0 0 8px var(--neon-red);
-        }
+        .btn-main { background: linear-gradient(90deg, #8b0000, #ff0000); font-weight: 700; transition: 0.3s; }
+        .btn-main:hover { box-shadow: 0 0 20px #ff0000; filter: brightness(1.2); }
 
-        /* Animated Buttons */
-        .btn-main {
-            background: linear-gradient(90deg, #8b0000, #ff0000);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            transition: 0.3s;
-        }
-
-        .btn-main:hover {
-            box-shadow: 0 0 20px #ff0000;
-            filter: brightness(1.2);
-        }
-
-        .whatsapp-vip {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 999;
-            background: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+        /* Floating WhatsApp */
+        .whatsapp-vip { position: fixed; bottom: 25px; right: 25px; z-index: 999; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <nav class="bg-black/90 border-b-2 border-red-600 sticky top-0 z-[100] backdrop-blur-md">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="bg-black/95 border-b-2 border-red-600 sticky top-0 z-[100] backdrop-blur-md">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
                 <span class="bg-red-600 text-white font-black px-2 py-1 rounded logo-font shadow-[0_0_10px_#ff0000]">M-MD</span>
-                <h1 class="text-xl md:text-2xl font-bold logo-font tracking-widest text-white">MUZAMMIL<span class="text-red-600">-MD</span></h1>
+                <h1 class="text-xl font-bold logo-font tracking-tighter text-white">MUZAMMIL<span class="text-red-600">-MD</span></h1>
             </div>
-            <div class="hidden md:flex flex-col text-right">
-                <span class="text-[10px] text-gray-500 uppercase font-bold">VIP Server Status</span>
-                <span class="text-green-500 text-xs font-bold animate-pulse">● ONLINE</span>
+
+            <div class="search-container relative w-full max-w-md">
+                <i class="fa fa-search absolute left-4 top-1/2 -translate-y-1/2 text-red-600"></i>
+                <input type="text" id="movieSearch" placeholder="Search Movies by Name..." class="w-full pl-12 pr-4 py-2.5 rounded-full text-sm">
+            </div>
+
+            <div class="hidden lg:block text-right">
+                <p class="text-[10px] text-gray-500 font-bold">OWNER SUPPORT</p>
+                <p class="text-red-500 text-xs font-bold">+923293152414</p>
             </div>
         </div>
     </nav>
 
-    <div class="py-16 text-center bg-gradient-to-b from-red-900/10 to-transparent">
-        <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-2">ULTRA <span class="text-red-600">4K</span> HUB</h2>
-        <p class="text-gray-400 text-sm md:text-lg tracking-[3px] uppercase">Curated by Muzammil-MD | No Ads | Fast Stream</p>
-        <div class="flex justify-center mt-6 gap-2">
-            <div class="w-16 h-1 bg-red-600 shadow-[0_0_10px_#f00]"></div>
-            <div class="w-4 h-1 bg-white"></div>
-        </div>
+    <div class="py-12 text-center">
+        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter italic">NEON <span class="text-red-600">CINEMA</span></h2>
+        <p class="text-gray-500 text-xs tracking-[5px] mt-2 uppercase">Official Muzammil-MD Content Delivery</p>
     </div>
 
-    <main class="container mx-auto px-4 md:px-10 pb-20">
-        <div class="mb-10 flex items-center gap-4">
-            <i class="fa fa-bolt text-red-600 text-xl"></i>
-            <h3 class="text-xl font-bold uppercase tracking-wider">Top Trending <span class="text-red-600 underline">Movies</span></h3>
-        </div>
-
-        <div id="movie-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-10">
+    <main class="container mx-auto px-4 pb-20">
+        <div id="movie-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8">
             </div>
+        <div id="no-result" class="hidden text-center py-20 text-gray-500">
+            <i class="fa fa-frown text-4xl mb-4"></i>
+            <p>No Movie Found. Try searching something else!</p>
+        </div>
     </main>
 
     <a href="https://wa.me/923293152414" class="whatsapp-vip">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
-    <footer class="bg-black py-12 border-t border-red-900/30 text-center">
-        <p class="logo-font text-red-600 text-lg mb-2">MUZAMMIL-MD DIGITAL</p>
-        <p class="text-gray-600 text-[11px] mb-4">Official Owner Number: +923293152414</p>
-        <div class="flex justify-center gap-6 text-gray-500 text-sm">
-            <span class="hover:text-red-600 cursor-pointer">DMCA</span>
-            <span class="hover:text-red-600 cursor-pointer">PRIVACY</span>
-            <span class="hover:text-red-600 cursor-pointer">TERMS</span>
-        </div>
+    <footer class="bg-black py-10 border-t border-red-900/30 text-center">
+        <p class="logo-font text-red-600">MUZAMMIL-MD</p>
+        <p class="text-gray-600 text-[10px] mt-1">CONTACT: 923293152414</p>
     </footer>
 
     <script>
+        // Full Data List
         const movieData = [
             { title: "Hot Spot (2024)", imdb: "7.3", img: "https://pirate.lk/wp-content/uploads/2026/02/lBhGZKyF4PVWemPsD5urEOnFiHz-150x150.jpg", link: "#" },
             { title: "Ronny – The ruler", imdb: "8.7", img: "https://pirate.lk/wp-content/uploads/2026/01/f3r1lw9WjSZpw5ukwmtHmwM0b4m-150x150.jpg", link: "#" },
@@ -149,48 +104,57 @@
             { title: "Hear Me: Our Summer", imdb: "7.5", img: "https://pirate.lk/wp-content/uploads/2025/12/dNCp17yK9L0pANvKTb6tWECQj4Q-150x150.jpg", link: "#" },
             { title: "Marco (2024)", imdb: "7.2", img: "https://pirate.lk/wp-content/uploads/2025/02/il3ao5gcF6fZNqo1o9o7lusmEyU-150x150.jpg", link: "#" },
             { title: "Ibbani Tabbida", imdb: "7.5", img: "https://pirate.lk/wp-content/uploads/2025/12/bvBGnP3L2HuB4RWmOzlPD0G45j9-150x150.jpg", link: "#" },
-            { title: "The Plot (2024)", imdb: "4.8", img: "https://pirate.lk/wp-content/uploads/2025/11/pBZ1N68Ral2rtNzeQAmGFhDadq0-150x150.jpg", link: "#" },
-            { title: "Eden (2024)", imdb: "6.5", img: "https://pirate.lk/wp-content/uploads/2025/11/jbFEESMVbpJU8IjZBjiWGJdEsxR-150x150.jpg", link: "#" }
+            { title: "Eden (2024)", imdb: "6.5", img: "https://pirate.lk/wp-content/uploads/2025/11/jbFEESMVbpJU8IjZBjiWGJdEsxR-150x150.jpg", link: "#" },
+            { title: "Customs Frontline", imdb: "5.5", img: "https://pirate.lk/wp-content/uploads/2025/11/a869Prbl9FEWeWPWSw0Q3phE4Iv-150x150.jpg", link: "#" }
         ];
 
         const grid = document.getElementById('movie-grid');
+        const searchInput = document.getElementById('movieSearch');
+        const noResult = document.getElementById('no-result');
 
-        movieData.forEach(movie => {
-            grid.innerHTML += `
-                <div class="movie-card group">
-                    <div class="neon-card rounded-2xl overflow-hidden relative">
-                        <div class="absolute top-3 right-3 z-10 bg-black/80 backdrop-blur-sm border border-red-600/50 px-2 py-1 rounded text-[10px] font-bold">
-                            <i class="fa fa-star text-yellow-500 mr-1"></i>${movie.imdb}
-                        </div>
-
-                        <div class="relative aspect-[3/4] overflow-hidden">
-                            <img src="${movie.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-                        </div>
-
-                        <div class="p-4 relative">
-                            <h4 class="text-sm font-bold truncate text-white mb-3 group-hover:text-red-500 transition">${movie.title}</h4>
-                            
-                            <div class="flex items-center gap-2 mb-4">
-                                <span class="text-[9px] text-gray-500 uppercase font-bold mr-1">Quality:</span>
-                                <span class="q-tag">480p</span>
-                                <span class="q-tag active">720p</span>
-                                <span class="q-tag">1080p</span>
+        function displayMovies(filter = '') {
+            grid.innerHTML = '';
+            const filtered = movieData.filter(m => m.title.toLowerCase().includes(filter.toLowerCase()));
+            
+            if(filtered.length === 0) {
+                noResult.classList.remove('hidden');
+            } else {
+                noResult.classList.add('hidden');
+                filtered.forEach(movie => {
+                    grid.innerHTML += `
+                        <div class="movie-card group">
+                            <div class="neon-card rounded-2xl overflow-hidden relative">
+                                <div class="absolute top-2 right-2 z-10 bg-black/80 px-2 py-0.5 rounded text-[10px] font-bold border border-red-600/40">
+                                    ★ ${movie.imdb}
+                                </div>
+                                <div class="relative aspect-[3/4] overflow-hidden">
+                                    <img src="${movie.img}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="text-sm font-bold truncate text-white mb-3">${movie.title}</h4>
+                                    <div class="flex gap-2 mb-4">
+                                        <span class="q-tag">480p</span>
+                                        <span class="q-tag active">720p</span>
+                                        <span class="q-tag">1080p</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <a href="${movie.link}" class="btn-main text-[10px] py-2 rounded-lg text-center uppercase">Watch</a>
+                                        <a href="${movie.link}" class="bg-zinc-800 text-white text-[10px] py-2 rounded-lg text-center uppercase hover:bg-zinc-700 transition">Save</a>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="grid grid-cols-2 gap-2">
-                                <a href="${movie.link}" class="btn-main text-[10px] py-2 rounded-lg text-center flex items-center justify-center gap-1">
-                                    <i class="fa fa-play text-[8px]"></i> Watch
-                                </a>
-                                <a href="${movie.link}" class="bg-zinc-800 hover:bg-zinc-700 text-white text-[10px] py-2 rounded-lg text-center font-bold uppercase flex items-center justify-center gap-1 transition">
-                                    <i class="fa fa-download text-[8px]"></i> Save
-                                </a>
-                            </div>
                         </div>
-                    </div>
-                </div>
-            `;
-        });
+                    `;
+                });
+            }
+        }
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => displayMovies(e.target.value));
+
+        // Initial Load
+        displayMovies();
     </script>
 </body>
 </html>
